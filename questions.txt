@@ -1,0 +1,34 @@
+0.  The longest recognized word in English
+1.  This function gets resource usage measures for a calling process, or 
+    its children, or the calling thread. 
+2.  16
+3.  So you can reuse the before and after structs in the same way for different process
+    you want to measure.  This is more elegant.  It requires less memory.
+4.  The program's "for loop" uses the number of characters in text file "fp" to set its
+    terminating condition.  The "for loop" uses one character in "fp" as an iteration
+    and increments the loop by the next consecutive character using fgetc() on "fp".  
+    The "c" variable in the "for loop" is added to an array called "word", constructing
+    the words to be spellchecked.  There are other variables, formulas and constants 
+    such as: LENGTH, index, isdigit() that help determine the validity and length of
+    "word".  Next the final spot in the "word" array is determined by adding a NULL
+    operator.  "word" is ready to be spell checked and "index" will be set to 0 as the
+    final step in the "for loop".
+    
+5.  fscanf() could cause a bug if the text file has characters of a different format
+    than the type designated in the function, like a number for example. 
+    fscanf is not as good for detecting errors as fgetc.
+6.  Functions that take input as pointers are capable of changing that input if you
+    do not use "const".  It could affect the variables in other parts of the program 
+    in unexpected ways, leading to bugs.
+    
+7.  I introduced a struct called "node" that consists of a char array and a
+    recursive node pointer.  I used node to create a hashtable array for the dictionary.
+    inside each hashtable I used node to create a linked list for the the dictionary.
+8.  My first total time was 3.27 seconds on small dictionary and text.
+9.  It took me 3 weeks.  I used valgrind and gdb to detect a major issue in my check
+    function.  The program was seg faulting because it was in an infinite loop instead
+    of determing when the "node" was at NULL at the end of a linked list.  I also made
+    adjustments to my hash function, when a one or two letter word was using old memory
+    data to calculate it's index.
+10. Not anymore.  My code is very fast because I spent a lot of time fixing memory 
+    leak issues.  Too much time really.
